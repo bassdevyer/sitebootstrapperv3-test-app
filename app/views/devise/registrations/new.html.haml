@@ -1,0 +1,39 @@
+- content_for :body_title do
+  Sign up
+
+-# Body
+.container
+  .row.adform
+    .col-md-1
+    .col-md-10
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        .form-group
+          = devise_error_messages!
+        .form-group
+          %label{for: "user_email"} Email
+          = f.text_field :email, size: '150', maxlenght: '150', class: 'form-control', placeholder: "Email", autofocus: true
+
+        .form-group
+          %label{for: "user_first_name"} First Name
+          = f.text_field :first_name, size: '150', maxlenght: '150', class: 'form-control', placeholder: "First Name"
+
+        .form-group
+          %label{for: "user_last_name"} Last Name
+          = f.text_field :last_name, size: '150', maxlenght: '150', class: 'form-control', placeholder: "Last Name"
+
+        .form-group
+          %label{for: "user_password"} Password
+          = f.password_field :password, size: '150', maxlenght: '150', class: 'form-control', placeholder: "Password"
+
+        .form-group
+          %label{for: "user_password_confirmation"} Password Confirmation
+          = f.password_field :password_confirmation, size: '150', maxlenght: '150', class: 'form-control', placeholder: "Password Confirmation"
+
+        .form-group
+          %button.btn.btn-primary{:type => 'submit'}
+            Sign up
+            %i.glyphicon.glyphicon-log-in
+    .col-md-1
+
+- content_for :body_footer do
+  = render :partial => "devise/shared/links"

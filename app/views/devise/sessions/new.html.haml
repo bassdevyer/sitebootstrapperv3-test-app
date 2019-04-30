@@ -1,0 +1,31 @@
+- content_for :body_title do
+  Sign in
+
+-# Body
+.container
+  .row.adform
+    .col-md-1
+    .col-md-10
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        .form-group
+          %label{for: "user_email"} Email
+          = f.text_field :email, size: '150', maxlenght: '150', class: 'form-control', placeholder: "Email", autofocus: true
+
+        .form-group
+          %label{for: "user_password"} Password
+          = f.password_field :password, size: '150', maxlenght: '150', class: 'form-control', placeholder: "Password"
+
+        - if devise_mapping.rememberable?
+          .form-group
+            = f.check_box :remember_me
+            %label{for: "user_remember_me"} Remember me?
+        .form-group
+          %hr/
+          .botones
+            %button.btn.btn-primary{:type => 'submit'}
+              Sign in
+              %i.glyphicon.glyphicon-log-in
+    .col-md-1
+
+- content_for :body_footer do
+  = render :partial => "devise/shared/links"
